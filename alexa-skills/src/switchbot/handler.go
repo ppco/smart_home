@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"log/slog"
+	"time"
 
 	_ "embed"
 
@@ -90,7 +91,9 @@ func (s Handler) OnIntent(ctx context.Context, req *alexa.Request, session *alex
 					if err != nil {
 						slog.ErrorContext(ctx, "failed to exec command", "command", v, "err", err)
 						res.SetOutputText(fmt.Sprintf("コマンドの実行に失敗しました。ログを確認してください。: %v", err))
+						return nil
 					}
+					time.Sleep(300 * time.Millisecond)
 				}
 			}
 		}
