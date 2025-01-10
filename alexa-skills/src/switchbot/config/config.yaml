@@ -1,0 +1,36 @@
+mappings:
+  - device: でんき
+    action: あかるく
+    deviceID: 01-202501041941-60635928
+    commands:
+      # 「いちばんあかるく」みたいなワードは需要があればやる
+      # とりあえず一発で最大輝度にする
+      - command: brightnessUp
+        parameter: default
+        commandType: command
+      - command: brightnessUp
+        parameter: default
+        commandType: command
+      - command: brightnessUp
+        parameter: default
+        commandType: command
+      - command: brightnessUp
+        parameter: default
+        commandType: command
+  - device: でんき
+    action: くらく
+    deviceID: 01-202501041941-60635928
+    commands:
+      # 同上
+      - command: brightnessDown
+        parameter: default
+        commandType: command
+      - command: brightnessDown
+        parameter: default
+        commandType: command
+      - command: brightnessDown
+        parameter: default
+        commandType: command
+      - command: brightnessDown
+        parameter: default
+        commandType: command
