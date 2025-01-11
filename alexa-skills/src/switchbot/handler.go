@@ -56,7 +56,9 @@ func (s Handler) OnSessionStarted(ctx context.Context, req *alexa.Request, sessi
 	return nil
 }
 func (s Handler) OnLaunch(ctx context.Context, req *alexa.Request, session *alexa.Session, ctx2 *alexa.Context, res *alexa.Response) error {
-	slog.InfoContext(ctx, "OnSessionStarted", "req", req, "session", session, "ctx", ctx2)
+	slog.InfoContext(ctx, "OnLaunch", "req", req, "session", session, "ctx", ctx2)
+	res.SetOutputText("スイッチボットを操作します。指示をしてください")
+	res.ShouldSessionEnd = false
 	return nil
 }
 func (s Handler) OnIntent(ctx context.Context, req *alexa.Request, session *alexa.Session, ctx2 *alexa.Context, res *alexa.Response) error {
@@ -93,8 +95,10 @@ func (s Handler) OnIntent(ctx context.Context, req *alexa.Request, session *alex
 						res.SetOutputText(fmt.Sprintf("コマンドの実行に失敗しました。ログを確認してください。: %v", err))
 						return nil
 					}
-					time.Sleep(300 * time.Millisecond)
+					time.Sleep(100 * time.Millisecond)
 				}
+				res.SetOutputText("スイッチボットを操作しました。続けて操作する場合は指示をしてください。")
+				res.ShouldSessionEnd = false
 			}
 		}
 
@@ -105,5 +109,8 @@ func (s Handler) OnIntent(ctx context.Context, req *alexa.Request, session *alex
 	return nil
 }
 func (s Handler) OnSessionEnded(ctx context.Context, req *alexa.Request, session *alexa.Session, ctx2 *alexa.Context, res *alexa.Response) error {
+	slog.InfoContext(ctx, "OnSessionEnded", "req", req, "session", session, "ctx", ctx2)
+	res.SetOutputText("スイッチボット操作を終了します")
+	res.ShouldSessionEnd = true
 	return nil
 }
