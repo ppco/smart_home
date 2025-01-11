@@ -48,3 +48,17 @@ mappings:
       - command: turnOn
         parameter: default
         commandType: command
+  - device: てれび
+    action: けす
+    deviceID: 01-202501051604-71164573
+    commands:
+      - command: turnOff
+        parameter: default
+        commandType: command
+  - device: てれび
+    action: つける
+    deviceID: 01-202501051604-71164573
+    commands:
+      - command: turnOn
+        parameter: default
+        commandType: command
