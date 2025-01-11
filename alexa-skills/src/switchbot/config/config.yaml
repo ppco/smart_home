@@ -34,3 +34,17 @@ mappings:
       - command: brightnessDown
         parameter: default
         commandType: command
+  - device: でんき
+    action: けす
+    deviceID: 01-202501041941-60635928
+    commands:
+      - command: turnOff
+        parameter: default
+        commandType: command
+  - device: でんき
+    action: つける
+    deviceID: 01-202501041941-60635928
+    commands:
+      - command: turnOn
+        parameter: default
+        commandType: command
